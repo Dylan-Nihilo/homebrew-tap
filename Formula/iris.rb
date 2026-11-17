@@ -5,6 +5,13 @@ class Iris < Formula
   sha256 "313b58141b52592970745a848edb55bb691e6f3acf1669c605f7628cbcb909b9"
   license "MIT"
 
+  # Without a bottle Homebrew counts the install as a build from source and refuses it on a
+  # machine whose Command Line Tools are out of date, although nothing is compiled.
+  bottle do
+    root_url "https://github.com/Dylan-Nihilo/homebrew-tap/releases/download/iris-0.1.0"
+    sha256 cellar: :any_skip_relocation, all: "c98bd96df597eed01e2bfa6397d8d6598cfab39faed0a15fa98f31b484df3271"
+  end
+
   depends_on macos: :sonoma
 
   def install
